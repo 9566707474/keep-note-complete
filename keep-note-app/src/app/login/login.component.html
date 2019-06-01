@@ -1,0 +1,39 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="d-flex flex-row justify-content-around flex-wrap">
+      <div class="col-m-3">
+        <div class="login border">
+          <h2 class="login-header">Log in</h2>
+          <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+
+            <p [ngClass]="{ 'has-error': isSubmitted && formControls.userId.errors }">
+              <input type="userId" placeholder="UserId" formControlName="userId">
+            </p>
+
+            <div *ngIf="isSubmitted && formControls.userId.errors" class="help-block">
+              <div *ngIf="formControls.userId.errors.required">UserId is required</div>
+            </div>
+
+            <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+              <input type="password" placeholder="Password" formControlName="password">
+            </p>
+
+            <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+              <div *ngIf="formControls.password.errors.required">Password is required</div>
+            </div>
+
+            <p>
+              <input type="submit" value="Log in">
+            </p>
+            <p>
+                <label class="error-message">{{ submitMessage }}</label>
+            </p>
+          </form>
+        </div>
+      </div>
+       <div class="col-m-5">
+          <app-register></app-register>
+        </div>
+    </div>
+  </div>
+</div>

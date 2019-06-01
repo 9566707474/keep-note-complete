@@ -1,0 +1,15 @@
+<mat-card-title>{{ title }}</mat-card-title>
+<button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+</button>
+<form id="contactForm" [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <input matInput placeholder="name" formControlName="name" class="form-control" name="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="description" formControlName="description" class="form-control" name="description">
+  </mat-form-field>
+  <br>
+    <button id="btnSubmit" mat-raised-button type="submit" color="primary">Submit</button>
+</form>

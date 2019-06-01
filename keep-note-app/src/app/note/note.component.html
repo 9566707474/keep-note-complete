@@ -1,0 +1,18 @@
+<div class="container">
+    <mat-card class="mat-card">
+        <!--[routerLink]="['/dashboard', {outlets: {'noteEditOutlet': ['note', note.id,'edit']}}]">-->
+        <button type="button" class="close" aria-label="Close" (click)="deleteNote(note)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <mat-card-title>{{note.title}}</mat-card-title>
+        <mat-card-content>
+            <p>{{note.content}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button [routerLink]="['/dashboard', {outlets: {'noteEditOutlet': ['note', note.id,'edit']}}]">
+                <mat-icon>create</mat-icon>
+            </button>
+            <app-dropdown-action></app-dropdown-action>
+        </mat-card-actions>
+    </mat-card>
+</div>

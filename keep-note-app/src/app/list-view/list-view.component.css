@@ -1,0 +1,26 @@
+.keep-view-width
+{
+    margin: 0% auto;
+    width: 70vw;
+}
+
+.keep-c-column-container{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.keep-c-list-container{
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.keep-c-item-container{
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

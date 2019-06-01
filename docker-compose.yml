@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+    Category:
+      image: categoryservice
+      ports:
+        - "8081:80"
+      depends_on:
+        - db
+      environment:
+        Mongo_DB: "mongodb://db:27017"
+
+    Note:
+      image: noteservice
+      ports:
+        - "8082:80"
+      depends_on:
+        - db
+      environment:
+        Mongo_DB: "mongodb://db:27017"   
+
+    Reminder:
+      image: reminderservice
+      ports:
+        - "8083:80"
+      depends_on:
+        - db
+      environment:
+        Mongo_DB: "mongodb://db:27017"  
+
+    user:
+      image: userservice
+      ports:
+        - "8084:80"
+      depends_on:
+        - db
+      environment:
+        Mongo_DB: "mongodb://db:27017"       
+
+    authentication:
+      image: authenticationservice
+      ports:
+        - "8085:80"
+      depends_on:
+        - sqldb  
+      environment:
+        Sql_DB: "Data source=sqldb;initial catalog=AuthDb;User id=sa;Password=P@ssw0rd"  
+
+    db:
+      image: mongo
+      ports:
+        - "27017:27017"
+
+    sqldb:
+        image: "mcr.microsoft.com/mssql/server"
+        environment:
+            SA_PASSWORD: "P@ssw0rd"
+            ACCEPT_EULA: "Y"
+
+        ports:
+            - "1433:1433"
+
+    keepnote:
+      image: keepnote
+      ports:
+        - "4200:80"
+        

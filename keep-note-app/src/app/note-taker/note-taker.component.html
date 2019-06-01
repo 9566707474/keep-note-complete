@@ -1,0 +1,25 @@
+<!-- Label to display any error messages -->
+<label class="error-message">{{ errMessage }}</label>
+
+<!-- Expansion panel to add new notes -->
+<div style="text-align:center">
+    <div class="note-container">
+        <mat-expansion-panel class="note-expansion-panel">
+            <mat-expansion-panel-header>
+                <mat-panel-title>{{title}}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="note-mat-form-field">
+                <mat-form-field>
+                    <input matInput name="title" placeholder="Enter Title" [(ngModel)]="note.title">
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput name="text" placeholder="Enter Description"
+                        [(ngModel)]="note.content"></textarea>
+                </mat-form-field>
+                <app-category-view class="note-mat-form-field" [categories]="categories" [selectedItem]="selectedCategory" (selected)="getCategory($event)"></app-category-view>
+                <app-reminder-component class="note-mat-form-field" [reminders]="reminders" [selectedReminderItems]="selectedReminders" (selectedReminders)="addedReminders($event)"></app-reminder-component>
+            </div>
+            <button mat-button (click)="addNote()">Done</button>
+        </mat-expansion-panel>
+    </div>
+</div>

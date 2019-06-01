@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-select placeholder="Select Category" (selectionChange)="doSomething($event)" [(value)]="selectedItem">
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<!--<p>You selected: {{selected}}</p>-->

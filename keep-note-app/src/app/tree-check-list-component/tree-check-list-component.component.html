@@ -1,0 +1,55 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+    <div class="d-flex align-items-center checklist-leaf-node">
+      <div class="col-m-1">
+        <button mat-icon-button (click)="deleteNode(node)">
+          <mat-icon aria-label="Example icon-button with a heart icon">delete_forever</mat-icon>
+        </button>
+      </div>
+      <div class="col">
+        {{node.item}}
+      </div>
+      <div class="col-m-1">
+        <button *ngIf="isCategoryChild(node.type)" mat-icon-button [routerLink]="['/dashboard', {outlets: {'categoryEditOutlet': ['category',node.id,'edit']}}]">
+          <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+        </button>
+        <button *ngIf="!isCategoryChild(node.type)" mat-icon-button [routerLink]="['/dashboard', {outlets: {'reminderEditOutlet': ['reminder',node.id,'edit']}}]">
+          <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-tree-node>
+
+  <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+    <button mat-icon-button disabled></button>
+    <mat-form-field>
+      <input matInput #itemValue placeholder="New item...">
+    </mat-form-field>
+    <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
+  </mat-tree-node>
+
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    <a><span>
+        <mat-icon *ngIf="isCategory(node.item)" class="material-icons">
+          collections
+        </mat-icon>
+        <mat-icon *ngIf="!isCategory(node.item)" class="material-icons">
+            add_alert
+        </mat-icon>
+      </span>{{node.item}}</a>
+      <button *ngIf="isCategory(node.item)" mat-icon-button [routerLink]="['/dashboard',{ outlets: { categoryAddOutlet: ['category'] } }]">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button *ngIf="!isCategory(node.item)" mat-icon-button [routerLink]="['/dashboard',{ outlets: { reminderAddOutlet: ['reminder'] } }]">
+        <mat-icon>add</mat-icon>
+      </button>
+   <!-- <button mat-icon-button [routerLink]="['/dashboard', {outlets: {'noteEditOutlet': ['note', 1,'edit']}}]">
+      <mat-icon>add</mat-icon>
+    </button>-->
+  </mat-tree-node>
+</mat-tree>

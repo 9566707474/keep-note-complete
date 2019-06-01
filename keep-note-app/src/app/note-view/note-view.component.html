@@ -1,0 +1,11 @@
+<!-- Include the notes collection with each note rendered as a separate NoteComponent -->
+
+	<div class="keep-c-note-test d-flex align-items-center flex-wrap">
+		<div *ngFor="let note of notes">
+			<div class="col-m-4">
+				<router-outlet name="noteEditOutlet">
+					<app-note [note]="note"></app-note>
+				</router-outlet>
+			</div>
+		</div>
+	</div>

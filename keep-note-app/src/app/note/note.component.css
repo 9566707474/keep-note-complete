@@ -1,0 +1,7 @@
+.note-mat-card-list{
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+  

@@ -1,0 +1,38 @@
+<!--<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+        <mat-icon color="secondary" aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Google Keep Note</span>
+    </mat-toolbar-row>
+  </mat-toolbar>-->
+
+<mat-sidenav-container class="mat-sidenav-container">
+  <mat-sidenav class="mat-sidenav" #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <a mat-list-item routerLink='/dashboard/view/noteview'><span>
+          <mat-icon class="material-icons">
+              dashboard
+          </mat-icon>
+      </span>Dashboard</a>
+      <!-- <a mat-list-item routerLink='/category'><span>
+          <mat-icon class="material-icons">
+              collections
+          </mat-icon>
+      </span>Category</a>
+      <a mat-list-item routerLink='/first'><span>
+          <mat-icon class="material-icons">
+              add_alert
+          </mat-icon>
+      </span>Reminder</a> -->
+      <app-tree-check-list-component>loading</app-tree-check-list-component>
+      <a mat-list-item (click)="logout()"><span><mat-icon class="material-icons">
+        settings_power
+        </mat-icon>        
+    </span>Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="mat-sidenav-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
